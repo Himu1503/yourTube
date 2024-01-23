@@ -1,4 +1,4 @@
- import { asyncHandler } from "../utils/asyncHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import {User} from "../models/user.model.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
@@ -22,7 +22,7 @@ const registerUser = asyncHandler(async (req,res) => {
    //    message : "ok"
    // })
 
-  const {fullName, email,password} =req.body
+  const {fullName, email,password,username} =req.body
   console.log("email: ", email )
 
   if(fullName === ""){
@@ -30,13 +30,13 @@ const registerUser = asyncHandler(async (req,res) => {
   }
  
 
-  if([fullName,email,password,userName].some((field)=> field?.trim() === "")){
+  if([fullName,email,password,username].some((field)=> field?.trim() === "")){
       throw new ApiError(400 , "All Fields are empty")
   }
 
 
   // Check if the User exists
-  const existedUser = User.findOne({
+  const existedUser = await User.findOne({
    $or: [{username } , {email}]
   })
 

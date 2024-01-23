@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 
 
-const userShema = new Schema ({
+const userSchema = new mongoose.Schema ({
 
 username:{
     type: String,
@@ -62,7 +62,7 @@ refreshToken:{
 
 //Pre Hooks Middleware 
 
-userShema.pre("save", async function(next) {
+userSchema.pre("save", async function(next) {
     if(!this.isModified("password")) return next();
 
     this.password = await bcrypt.hash(this.password, 10 )
@@ -70,10 +70,10 @@ userShema.pre("save", async function(next) {
     
 })
 
-userShema.methods.isPasswordCorrect = async function(password){
+userSchema.methods.isPasswordCorrect = async function(password){
     return await bcrypt.compare(password, this.password)
 }
-userShema.methods.generateAccessToken = function(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign({
         _id: this.id,
         email:this.email,
@@ -105,4 +105,4 @@ userSchema.methods.generateRefreshtToken =function(){
 
 
 
-export const User = mongoose.model("User",userShema)
+export const User = mongoose.model("User",userSchema)
