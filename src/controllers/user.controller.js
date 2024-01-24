@@ -237,7 +237,7 @@ const getCurrentUser = asyncHandler(async (req,res)=>{
 })
 
 
-const constupdateAccountDetails = asyncHandler(async (req,res)=>{
+const updateAccountDetails = asyncHandler(async (req,res)=>{
   const {fullName, email} = req.body
 
   if(!(fullName || email)){
@@ -437,4 +437,4 @@ const getWatchHistory = asyncHandler( async (req, res)=> {
 
 
 
-export {registerUser, loginUser,logoutUser, refreshAccessToken, changeCurrentPassword,getCurrentUser,updateUserAvatar,updateUserCoverImage,getUserChannelProfile,getWatchHistory}
+export {registerUser, loginUser,logoutUser, refreshAccessToken, changeCurrentPassword,getCurrentUser,updateUserAvatar,updateUserCoverImage,getUserChannelProfile,getWatchHistory,updateAccountDetails}
