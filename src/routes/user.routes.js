@@ -27,9 +27,9 @@ router.route("/refresh-token").post(refreshAccessToken)
 
 router.route("/change-password").post(verifyJWT, changeCurrentPassword)
 router.route("/current-user").get(verifyJWT, getCurrentUser)
-router.route("/update-account").path(verifyJWT, updateAccountDetails)
-router.route("/avatar").path(verifyJWT, upload.single("avatar"), updateUserAvatar)
-router.route("/cover-image").path(verifyJWT, upload.single("coverImage"), updateUserCoverImage)
+router.route("/update-account").post(verifyJWT, updateAccountDetails)
+router.route("/avatar").post(verifyJWT, upload.single("avatar"), updateUserAvatar)
+router.route("/cover-image").post(verifyJWT, upload.single("coverImage"), updateUserCoverImage)
 
 router.route("/c/:username").get(verifyJWT, getUserChannelProfile)
 
