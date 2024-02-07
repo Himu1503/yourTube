@@ -27,14 +27,54 @@ const createTweet = asyncHandler(async (req, res) => {
 
 const getUserTweets = asyncHandler(async (req, res) => {
     // TODO: get user tweets
+
 })
 
 const updateTweet = asyncHandler(async (req, res) => {
     //TODO: update tweet
+
+    const {content} = req.body
+
+    if(!(content)){
+        throw new ApiError(400,"Content is required")
+      }
+
+      Tweet.findByIdAndUpdate(
+        req.user?._id,{
+          $set:{
+            content: content,
+          }
+        },
+        {
+          new:true
+        }
+      )
+    return res.status(200).json( new ApiResponse(200, user, "Tweet updated successfully"))
 })
 
 const deleteTweet = asyncHandler(async (req, res) => {
     //TODO: delete tweet
+
+    const { tweetId } = req.params 
+
+    try {
+        const tweet = await Tweet.findById(tweetId)
+
+        if(!tweet){
+            throw new ApiError(404, "Tweet not found");
+        }
+
+        await tweet.remove()
+        return res.status(200).json(new ApiResponse(200, {}, "Tweet deleted successfully"));
+
+    } catch (error) {
+        console.error('Error deleting video:', error.message);
+        if (error.kind === 'ObjectId') {
+          throw new ApiError(400, 'Invalid tweet ID');
+        }
+        throw new ApiError(500, 'Internal Server Error');
+      }
+
 })
 
 export {
