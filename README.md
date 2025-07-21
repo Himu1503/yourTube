@@ -1,142 +1,173 @@
-YourTube Backend
+# Youtube Backend
+
 This project is a complex backend project that is built with nodejs, expressjs, mongodb, mongoose, jwt, bcrypt, and many more. This project is a complete backend project that has all the features that a backend project should have. I tried to build a complete video hosting website similar to youtube with all the features like login, signup, upload video, like, unlike, comment, subscribe, unsubscribe, and many more.
 
 Project uses all standard practices like JWT, bcrypt, access tokens, refresh Tokens and many more.
 
 Services used for storing the data- mongoDB and cloudinary
 
-Data Model
-Model
+## Data Model
 
-Acknowledgements
-Chai aur Code
-Lessons Learned
+[Model](https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj)
+
+## Acknowledgements
+
+- [Chai aur Code](https://www.youtube.com/@chaiaurcode)
+
+## Lessons Learned
+
 While working on this project, I practiced various backend logics, including data modelling, error handling, middlewares, RESTFul API , Authentication, dealing with database queries, etc.
 
 One of the key learning points was understanding and applying MongoDB aggregate pipelines, which were new concepts to me.
 
 I also learned how to maintain industry standard code which is readable and also got to know the importance of reusable code.
 
-API Routes
-For Users
-/api/v1/users
+## API Routes
 
--/register- POST - Registers an user
+### For Users
 
--/login- POST - Logs in an user
+- `/api/v1/users`
 
--/logout- POST - Logs out an user
+  -`/register`- POST - Registers an user
 
--/change-password- POST - Changes the password for the user
+  -`/login`- POST - Logs in an user
 
--/refresh-token- POST - Generates new refresh token for the user
+  -`/logout`- POST - Logs out an user
 
--/current-user- GET - Gets the current user
+  -`/change-password`- POST - Changes the password for the user
 
--/watch-history- GET - Gets the watch history of current user
+  -`/refresh-token`- POST - Generates new refresh token for the user
 
--/channel/:username- GET - Returns user channel profile
+  -`/current-user`- GET - Gets the current user
 
--/avatar- PATCH - Updates the avatar of the user
+  -`/watch-history`- GET - Gets the watch history of current user
 
--/cover-image- PATCH - Updates the cover image of the user
+  -`/channel/:username`- GET - Returns user channel profile
 
--/update-account-details- PATCH - Updates the account details of the user
+  -`/avatar`- PATCH - Updates the avatar of the user
 
-For Videos
-/api/v1/videos
+  -`/cover-image`- PATCH - Updates the cover image of the user
 
--/publish-video- POST - To upload the video
+  -`/update-account-details`- PATCH - Updates the account details of the user
 
--/update-video/:videoId- POST - Update video details(title, description and thumbnail)
+### For Videos
 
--/toggle-publish-status/:videoId- POST - Toggle the publish status of a video
+- `/api/v1/videos`
 
--/get-all-videos- GET - To fetch all videos of the user
+  -`/publish-video`- POST - To upload the video
 
--/:videoId- GET - To fetch the video by video ID
+  -`/update-video/:videoId`- POST - Update video details(title, description and thumbnail)
 
--/delete-video/:videoId- DELETE - To delete the video
+  -`/toggle-publish-status/:videoId`- POST - Toggle the publish status of a video
 
-For Tweets
-/api/v1/tweets
+  -`/get-all-videos`- GET - To fetch all videos of the user
 
--/- POST - To create a tweet
+  -`/:videoId`- GET - To fetch the video by video ID
 
--/user/:userId- GET - To get user tweets
+  -`/delete-video/:videoId`- DELETE - To delete the video
 
--/:tweetId- GET - To update the tweet
+### For Tweets
 
--/:tweetId- DELETE - To delete the tweet
+- `/api/v1/tweets`
 
-For Playlist
-/api/v1/playlist
+  -`/`- POST - To create a tweet
 
--/:playlistId - GET - To fetch the playlist -PATCH - To update the playlist -DELETE - To delete the playlist
+  -`/user/:userId`- GET - To get user tweets
 
--/add/:videoId/:playlistId- PATCH - To add video to the playlist
+  -`/:tweetId`- GET - To update the tweet
 
--/remove/:videoId/:playlistId- PATCH - To remove video from the playlist
+  -`/:tweetId`- DELETE - To delete the tweet
 
--/user/:userId- GET - To get user playlists
+### For Playlist
 
-For Comments
-/api/v1/comments
+- `/api/v1/playlist`
 
--/:videoId - GET - To get video comments -POST - To comment onto a video
+  -`/:playlistId` - GET - To fetch the playlist
+  -PATCH - To update the playlist
+  -DELETE - To delete the playlist
 
--/c/:commentId- PATCH - To update the comment - DELETE- To delete the comment
+  -`/add/:videoId/:playlistId`- PATCH - To add video to the playlist
 
-For Likes
-/api/v1/likes
+  -`/remove/:videoId/:playlistId`- PATCH - To remove video from the playlist
 
--/toggle/v/:videoId- POST - To toggle video like
+  -`/user/:userId`- GET - To get user playlists
 
--/toggle/c/:commentId- POST - To toggle comment like
+### For Comments
 
--/toggle/t/:tweetId- POST - To toggle tweet like
+- `/api/v1/comments`
 
--/videos- GET - To get the liked videos of the logged in user
+  -`/:videoId` - GET - To get video comments
+  -POST - To comment onto a video
 
-For Subscription
-/api/v1/subscriptions
+  -`/c/:commentId`- PATCH - To update the comment - DELETE- To delete the comment
 
--/c/:channelId - GET - To get Channel Subscribers -POST - To toggle subscription on the channel
+### For Likes
 
--/u/:subscriberId- GET - To get Subscribed channels
+- `/api/v1/likes`
 
-For Dashboard
-/api/v1/dashboard
+  -`/toggle/v/:videoId`- POST - To toggle video like
 
--/stats- GET - To get channel stats(logged in)
+  -`/toggle/c/:commentId`- POST - To toggle comment like
 
--/videos- GET - TTo get channel videos(logged in)
+  -`/toggle/t/:tweetId`- POST - To toggle tweet like
 
-For Health Check
-/api/v1/healthcheck
+  -`/videos`- GET - To get the liked videos of the logged in user
 
--/- GET - Return OK Status
+### For Subscription
 
-Run Locally
+- `/api/v1/subscriptions`
+
+  -`/c/:channelId` - GET - To get Channel Subscribers
+  -POST - To toggle subscription on the channel
+
+  -`/u/:subscriberId`- GET - To get Subscribed channels
+
+### For Dashboard
+
+- `/api/v1/dashboard`
+
+  -`/stats`- GET - To get channel stats(logged in)
+
+  -`/videos`- GET - TTo get channel videos(logged in)
+
+### For Health Check
+
+- `/api/v1/healthcheck`
+
+  -`/`- GET - Return OK Status
+
+## Run Locally
+
 Clone the project
 
+```bash
   git clone https://github.com/AyanGairola/yt-backend.git
+```
+
 Go to the project directory
 
+```bash
   cd my-project
+```
+
 Install dependencies
 
+```bash
   npm install
+```
+
 Start the server
 
+```bash
   npm run dev
-Documentation
-mongoose
+```
 
-multer
+## Documentation
 
-jason web tokens
+[mongoose](https://mongoosejs.com/docs/guide.html)
 
-cloudinary
+[multer](https://www.npmjs.com/package/multer)
 
+[jason web tokens](https://www.npmjs.com/package/jsonwebtoken)
 
+[cloudinary](https://cloudinary.com/documentation/node_integration)
