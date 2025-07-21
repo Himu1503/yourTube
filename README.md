@@ -10,9 +10,6 @@ Services used for storing the data- mongoDB and cloudinary
 
 [Model](https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj)
 
-## Acknowledgements
-
-- [Chai aur Code](https://www.youtube.com/@chaiaurcode)
 
 ## Lessons Learned
 
